@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+<html>
+<head>
+
+</head>
+<body>
+{% block content %}
+  <h5>Analysis Results</h5>
+      <p align="center"><b>Multiple Linear regression</b>  </p>
+<table class="table table-striped table-bordered table-hover table-sm" style="width: 50%; table-layout: fixed;" align="center">
+  <thead>
+    <tr>
+    <th class="text-center">Performance Metric</th>
+    <th class="text-center">Value</th>
+  </tr>
+  </thead>
+    <tbody>
+  {% for key, value in result1.items %}
+    <tr>
+      <td class="text-center">{{ key }}</td>
+      <td class="text-center">{{ value }}</td>
+    </tr>
+  {% endfor %}
+    <tbody>
+</table>
+    <p align="center"><b>Random Forest Regression</b></p>
+<table class="table table-striped table-bordered table-hover table-sm" style="width: 50%; table-layout: fixed;" align="center">
+  <thead>
+    <tr>
+    <th class="text-center">Performance Metric</th>
+    <th class="text-center">Value</th>
+  </tr>
+  </thead>
+    <tbody>
+  {% for key, value in result2.items %}
+    <tr>
+      <td class="text-center">{{ key }}</td>
+      <td class="text-center">{{ value }}</td>
+    </tr>
+  {% endfor %}
+    <tbody>
+</table>
+    <p align="Center"><b>Support Vector Regression</b></p>
+<table class="table table-striped table-bordered table-hover table-sm" style="width: 50%; table-layout: fixed;" align="center">
+  <thead>
+    <tr>
+    <th class="text-center">Performance Metric</th>
+    <th class="text-center">Value</th>
+  </tr>
+  </thead>
+    <tbody>
+  {% for key, value in result3.items %}
+    <tr>
+      <td class="text-center">{{ key }}</td>
+      <td class="text-center">{{ value }}</td>
+    </tr>
+  {% endfor %}
+    <tbody>
+</table>
+    <p align="center"><b>Ridge Regression</b></p>
+<table class="table table-striped table-bordered table-hover table-sm" style="width: 50%; table-layout: fixed;" align="center">
+  <thead>
+    <tr>
+    <th class="text-center">Performance Metric</th>
+    <th class="text-center">Value</th>
+  </tr>
+  </thead>
+    <tbody>
+  {% for key, value in result4.items %}
+    <tr>
+      <td class="text-center">{{ key }}</td>
+      <td class="text-center">{{ value }}</td>
+    </tr>
+  {% endfor %}
+    <tbody>
+</table>
+<p align="center"><b>Multi-layer Perceptron</b></p>
+<table class="table table-striped table-bordered table-hover table-sm" style="width: 50%; table-layout: fixed;" align="center">
+  <thead>
+    <tr>
+    <th class="text-center">Performance Metric</th>
+    <th class="text-center">Value</th>
+  </tr>
+  </thead>
+    <tbody>
+  {% for key, value in result5.items %}
+    <tr>
+      <td class="text-center">{{ key }}</td>
+      <td class="text-center">{{ value }}</td>
+    </tr>
+  {% endfor %}
+    <tbody>
+</table>
+<div class="container text-center">
+    <a href="javascript:history.back()" class="btn btn-secondary" >Back</a>
+  </div>
+<hr>
+{% endblock %}
+</body>
+</html>

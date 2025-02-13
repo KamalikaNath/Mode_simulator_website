@@ -1,0 +1,124 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+<!--    <script>-->
+<!--  $(document).ready(function() {-->
+<!--    // Handler for button click-->
+<!--    $('#displayPlotButton').click(function() {-->
+<!--      // Retrieve the plot image URL or data (replace with your method to get the image)-->
+<!--      const residualPlot = "data:image/png;base64,{{ residual_plot }}"; // Replace with the correct method to get the image URL or data-->
+
+<!--      // Display the plot in the container-->
+<!--      if (residualPlot && residualPlot.trim() !== "") {-->
+<!--        $('#plotContainer').html(`<img src="${residualPlot}" alt="Residual Plot">`);-->
+<!--      } else {-->
+<!--        $('#plotContainer').html('<p>No valid residual plot data.</p>');-->
+<!--      }-->
+<!--    });-->
+<!--  });-->
+<!--</script>-->
+
+</head>
+
+<body>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<h4 align="center">Results</h4>
+
+
+    <h6>Performance Metrics for Testing Data:</h6>
+    <table class="table table-striped table-bordered table-hover table-lg" style="width: 100%; table-layout: auto;" align="center">
+        <thead>
+  <tr>
+    <th>Method Name</th>
+    <th>Mean Absolute Error (MAE)</th>
+    <th>Mean Squared Error (MSE)</th>
+    <th>Root Mean Squared Error (RMSE)</th>
+      <th>R<sup>2</sup></th>
+      </tr>
+  </thead>
+  {% for _, row in test_results_df.iterrows %}
+        <tbody>
+  <tr>
+    <td>{{ row.Method }}</td>
+    <td>{{ row.MAE_test }}</td>
+    <td>{{ row.MSE_test }}</td>
+    <td>{{ row.RMSE_test }}</td>
+    <td>{{ row.test_R_squared }}</td>
+
+  </tr>
+  {% endfor %}
+        </tbody>
+</table>
+    <h6>Performance Metrics for Training Data:</h6>
+    <table class="table table-striped table-bordered table-hover table-sm " style="width: 100%; table-layout: auto;" align="center">
+        <thead>
+  <tr>
+      <th>Method Name</th>
+      <th>Mean Absolute Error (MAE)</th>
+      <th>Mean Squared Error (MSE)</th>
+      <th>Root Mean Squared Error (RMSE)</th>
+      <th>R<sup>2</sup></th>
+      </tr>
+  </thead>
+  {% for _, row in train_results_df.iterrows %}
+        <tbody>
+  <tr>
+      <td>{{ row.Method }}</td>
+      <td>{{ row.MAE_train }}</td>
+      <td>{{ row.MSE_train }}</td>
+      <td>{{ row.RMSE_train }}</td>
+      <td>{{ row.Train_R_squared }}</td>
+
+  </tr>
+  {% endfor %}
+        </tbody>
+</table>
+<hr>
+
+<p align="center">
+    The method with the highest R<sup>2</sup> score is: <b>{{ best_method }}</b>
+</p>
+
+<hr>
+<div class="container text-center">
+{% if plot_image %}
+  <h4 >Actual vs Predicted Plot ({{ best_method }})</h4>
+  <img src="data:image/png;base64,{{ plot_image }}" alt="Actual vs Predicted Plot" align="center">
+{% endif %}
+</div>
+<hr>
+
+<div class="container text-center">
+    {% if best_method == 'Multiple Linear Regression' %}
+    <h4>Residual Diagnostics ({{ best_method }})</h4>
+     <img src="/static/images/MLR_residual_plot.png" alt="Residual Diagnostics Plot" width="1000" style="border: 2px solid black;" align="center">
+    {% elif best_method == 'Random Forest Regression' %}
+    <h4>Residual Diagnostics ({{ best_method }})</h4>
+     <img src="/static/images/RF_residual_plot.png" alt="Residual Diagnostics Plot" width="1000" style="border: 2px solid black;" align="center">
+    {% elif best_method == 'Support Vector Regression' %}
+    <h4>Residual Diagnostics ({{ best_method }})</h4>
+     <img src="/static/images/SVR_residual_plot.png" alt="Residual Diagnostics Plot" width="1000" style="border: 2px solid black;" align="center">
+    {% else %}
+    <h4>Residual Diagnostics ({{ best_method }})</h4>
+     <img src="/static/images/Ridge_residual_plot.png" alt="Residual Diagnostics Plot" width="1000" style="border: 2px solid black;" align="center">
+    {% endif %}
+</div>
+
+<!--<div id="plotContainer" align="center">-->
+<!--<button id="displayPlotButton">Display Residual Diagnostics Plot ({{ best_method }})</button></div>-->
+<div class="container text-center">
+    <a href="javascript:history.back()" class="btn btn-secondary" >Back</a>
+  </div>
+<hr>
+{% endblock %}
+</body>
+</html>

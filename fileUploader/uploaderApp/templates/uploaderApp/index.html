@@ -1,0 +1,181 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<html>
+<head>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
+  <style>
+    body {
+      font-family: "Times New Roman", Times, serif;
+      margin: 0;
+      padding: 0px;
+    }
+    .content {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+    .form-group {
+      margin-bottom: 15px;
+    }
+    .btn-submit {
+      margin-top: 20px;
+    }
+    .container-guidelines {
+      margin-top: 30px;
+    }
+    .container {
+      display: flex;
+      justify-content: space-between;
+    }
+    .column {
+      flex: 1;
+      padding: 20px;
+      margin: 0 10px;
+      background-color: #f2f2f2;
+      border: 1px solid #ccc;
+    }
+    .navbar {
+      background-color: #333;
+      overflow: hidden;
+    }
+    .navbar a {
+      float: left;
+      text-align: center;
+      font-size: 20px;
+      padding: 8px 20px;
+      text-decoration: none;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+  <div class="content">
+    <form method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      <div class="form-group">
+        <h5><b>Upload CSV File:</b></h5>
+        <input type="file" accept=".csv" name="file" class="form-control-file" id="file" required>
+        <hr>
+      </div>
+      <button type="submit" class="btn btn-success btn-submit" name="select_features" value="Perform_Feature_Selection">Submit</button>
+    </form>
+      <div class="container-guidelines">
+    <dl>
+      <dt>Guidelines</dt>
+      <dd>* Uploaded file should be in 'csv' format only.</dd>
+      <dd>* Target/Dependent variable (y) column must be the last column of the data file.</dd>
+    </dl>
+  </div>
+  </div>
+
+
+  <div class="container">
+    <div class="column">
+      <div class="content">
+        <form method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+          <div class="form-group">
+            <h5><b>Select Feature Selection Method:</b></h5>
+          </div>
+          <div class="form-group">
+            <label class="form-check-label">
+              <input class="form-check-input" type="radio" name="option" value="option1" checked>
+              Stepwise Regression
+            </label>
+          </div>
+          <!-- Add other feature selection options here -->
+<div class="form-group">
+      <label class="form-check-label">
+        <input class="form-check-input" type="radio" name="option" value="option2">
+        Lasso
+      </label>
+    </div>
+    <div class="form-group">
+      <label class="form-check-label">
+        <input class="form-check-input" type="radio" name="option" value="option3">
+        Random Forest
+      </label>
+    </div>
+    <div class="form-group">
+      <label class="form-check-label">
+        <input class="form-check-input" type="radio" name="option" value="option4">
+        Ridge Regression
+      </label>
+    </div>
+          <button type="submit" class="btn btn-success btn-submit" name="select_features" value="Perform_Feature_Selection">Submit</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="column">
+      <div class="content">
+        <form method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+          <div class="form-group">
+            <h5><b>Select Analysis and Prediction Method:</b></h5>
+          </div>
+          <div class="form-group">
+            <label class="form-check-label">
+              <input class="form-check-input" type="radio" name="option" value="option1">
+              Multiple Linear Regression
+            </label>
+          </div>
+          <!-- Add other model options here -->
+            <div class="form-group">
+      <label class="form-check-label">
+        <input class="form-check-input" type="radio" name="option" value="option2">
+        Random Forest Regression
+      </label>
+    </div>
+    <div class="form-group">
+      <label class="form-check-label">
+        <input class="form-check-input" type="radio" name="option" value="option3">
+        Support Vector Regression
+      </label>
+    </div>
+    <div class="form-group">
+      <label class="form-check-label">
+        <input class="form-check-input" type="radio" name="option" value="option4">
+        Ridge Regression
+      </label>
+    </div>
+    <div class="form-group">
+      <label class="form-check-label">
+        <input class="form-check-input" type="radio" name="option" value="option5">
+        MLP Regression
+      </label>
+    </div>
+    <div class="form-group">
+      <label class="form-check-label">
+        <input class="form-check-input" type="radio" name="option" value="option6" checked>
+        All of the above
+      </label>
+    </div>
+
+          <button type="submit" class="btn btn-success btn-submit" name="analyse" value="Perform_Analysis">Analyse</button>
+        </form>
+      </div>
+    </div>
+  </div>
+<br>
+  <br>
+
+  <div class="container text-center">
+  <div class="d-flex justify-content-center">
+    <a href="{% url 'home' %}" class="btn btn-secondary">Back to Homepage</a>
+  </div>
+</div>
+
+</body>
+</html>
+{% endblock %}

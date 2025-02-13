@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+    body {
+      font-family: "Times New Roman", Times, serif;
+      margin: 0;
+      padding: 0px;
+    }
+
+    .content {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    p {
+      text-align: justify;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<br>
+<br>
+<br>
+<br>
+  <div class="content">
+    <div class="row h3 text-center text-green bg-D8EBE6">
+    <h5><b>Welcome to our Regression Analysis Platform</b></h5>
+    </div>
+    <p>
+      Cereal Systems Initiative for South Asia (CSISA) (led by the International Maize and
+      Wheat Improvement Centre (CIMMYT)) and Extension Division of the Indian Council of
+      Agricultural Research (ICAR) has deployed Landscape Diagnostic Survey (LDS).
+      The survey captured production practices applied by farmers in Rice and Wheat crops.
+      The survey recorded a large number of variables covering major crop production
+      factors such as previous crop, residue management, crop establishment method,
+      variety and seed sources, nutrient management, irrigation management, weed flora
+      and their management, harvesting method and farmer reported yield.
+    </p>
+    <p>
+      The LDS analysis can identify mega or large trends across regions (e.g. variety/hybrid
+      use), interactions and more local or ecology specific contexts (e.g. the performance
+      of long vs medium duration varieties in different ecologies), and importantly identify
+      new categories or groupings to target and understand adoption (e.g. by types and number
+      of irrigations). This ecosystem requires an integrated effort on the part of biological
+      and social scientists to diagnose issues faster and find solutions accordingly. To achieve
+      this, it is required to find out the variables/factors, which are majorly contributing
+      towards determining the yield of rice and wheat.
+    </p>
+    <p>
+      In this Web Application, Machine learning algorithms viz. Stepwise regression, LASSO
+      (least absolute shrinkage and selection operator), Ridge Regression and Random Forest
+      Regression can be used for feature selection. The selected features are employed for
+      crop yield prediction using Multiple Linear Regression (MLR), Support Vector Regression,
+      Ridge Regression and Random Forest Regression. The accuracy of the models are computed
+      using diagnostic measures viz. Coefficient of determination (R2), Mean Absolute Error
+      (MAE), Mean Absolute Percentage Error (MAPE) and Root Mean Squared Error (RMSE).
+    </p>
+    </div>
+<hr>
+{% endblock %}
+
+</body>
+</html>

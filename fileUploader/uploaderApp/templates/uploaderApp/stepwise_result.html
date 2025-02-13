@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+</head>
+<body>
+{% block content %}
+
+   <br>
+<br>
+<br>
+<br>
+<br>
+<div class="container">
+<h5 align=" center"><b>{{ method }} Feature Selection Results</b></h5>
+  </div>
+<div>
+<table class="table table-striped table-bordered table-hover table-sm " style="width: 100%; table-layout: auto;">
+    <tr>
+        <th>Selected Features</th>
+        <th>P-Values</th>
+    </tr>
+    {% for row in results.iterrows %}
+    <tr>
+        <td>{{ row.1.Features }}</td>
+        <td>{{ row.1.P_Values }}</td>
+    </tr>
+  {% endfor %}
+</table>
+</div>
+    <div class="container text-center">
+    <a href="javascript:history.back()" class="btn btn-secondary" >Back</a>
+  </div>
+
+<hr>
+{% endblock %}
+
+</body>
+</html>

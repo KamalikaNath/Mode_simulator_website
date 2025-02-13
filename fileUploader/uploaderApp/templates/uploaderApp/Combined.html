@@ -1,0 +1,44 @@
+<!-- myapp/templates/myapp/regression.html -->
+
+{% extends 'base.html' %}
+<html>
+  <body>
+{% block content %}
+<br>
+  <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="form-group">
+      <label for="file">Upload CSV File:</label>
+      <input type="file" name="file" class="form-control-file" id="file" required>
+    </div>
+
+    <br>
+    <button type="submit" class="btn btn-success">Submit</button>
+    <br>
+    <br>
+<!--    <button type="submit" class="btn btn-success">Show Combined Result</button>-->
+    <a href="{% url 'plotview' %}" class="btn btn-primary">Show Combined result</a>
+  </form>
+<br>
+<div class="container p-1 my-1 pt-1">
+  <dl>
+    <dt>Guidelines</dt>
+    <dd>* Uploaded file should be only in 'csv' format.</dd>
+    <dd>* Target/Independent variable column must be the last column of the datafile.</dd>
+  </dl>
+</div>
+<div class="container text-center">
+    <a href="javascript:history.back()" class="btn btn-secondary" >Back</a>
+  </div>
+<hr>
+<!--{% if result %}-->
+<!--<h6>Combined results:</h6>-->
+<!--    <p>Linear regression result: {{ result1 }}</p>-->
+<!--    <p>Polynomial regression result: {{ result2 }}</p>-->
+<!--    <p>Ridge regression result: {{ result3 }}</p>-->
+<!--{% endif %}-->
+{% endblock %}
+
+</body>
+
+</html>
